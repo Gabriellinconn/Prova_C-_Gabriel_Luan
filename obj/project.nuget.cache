@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XxL5Se634S08t8Vu6ikP2XVl89IpPVibFcTpiMYBCx3oeva1n9/28vhdE2vmLwtSqVdsPfPYxwLRnwG6a/Ka/A==",
+  "dgSpecHash": "0kPE9o/ek0SQ08MyxjooOI3WomHJJHaaAOVwAh9M5JqvpCWNStM23GGhjwcXXl8f8JEtxAu/Pn9JagN5c3JITQ==",
   "success": true,
-  "projectFilePath": "C:\\Luan\\code\\MinimalApiProject\\MinimalApiProject.csproj",
+  "projectFilePath": "C:\\_ws\\ProvaC#\\ProvaCsharp\\MinimalApiProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\autologon\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\autologon\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
