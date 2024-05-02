@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using API.Models;
+
 
 namespace API.Models;
 
@@ -15,10 +17,10 @@ public class Folha
 
     }
 
-    public Double Valor {get; set;}
-    public Double Quantidade {get;set;}
+    public double Valor {get; set;}
+    public double Quantidade {get;set;}
     public int Mes {get;set;}
     public int Ano {get;set;}
-    public String FuncionarioId {get;set;}
-
+    public string FuncionarioId {get;set;}
+   
 }

@@ -1,0 +1,28 @@
+### Raiz da aplicação
+GET http://localhost:5154/
+
+###Cadastrar Funcionario
+POST http://localhost:5154/api/funcionario/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Gabriel",
+    "cpf" : "14200038951",
+    "id" : "1"
+}
+
+###Listar Funcionarios
+
+GET http://localhost:5154/api/funcionario/listar
+
+###Cadastrar Funcionario
+POST http://localhost:5154/api/folha/cadastrar
+Content-Type: application/json
+
+{
+    "valor" : 50,
+    "quantidade" : 1000,
+    "mes" : 10, 
+    "ano" : 2023,
+    "funcionarioId" : 1
+}
