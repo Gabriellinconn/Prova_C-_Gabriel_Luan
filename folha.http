@@ -1,0 +1,18 @@
+###Listar Folha
+GET http://localhost:5154/api/folha/listar
+
+###Cadastrar Folha
+POST http://localhost:5154/api/folha/cadastrar
+Content-Type: application/json
+
+{
+    "valor" : 50,
+    "quantidade" : 1000,
+    "mes" : 10,
+    "ano" : 2023,
+    "funcionarioId" : 1
+}
+
+###Buscar Folha
+GET http://localhost:5154/api/folha/buscar
+

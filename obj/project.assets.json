@@ -2540,11 +2540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\_ws\\ProvaC#\\ProvaCsharp\\MinimalApiProject.csproj",
+      "projectUniqueName": "C:\\Luan\\code\\Prova_C-_Gabriel_Luan\\MinimalApiProject.csproj",
       "projectName": "MinimalApiProject",
-      "projectPath": "C:\\_ws\\ProvaC#\\ProvaCsharp\\MinimalApiProject.csproj",
+      "projectPath": "C:\\Luan\\code\\Prova_C-_Gabriel_Luan\\MinimalApiProject.csproj",
       "packagesPath": "C:\\Users\\autologon\\.nuget\\packages\\",
-      "outputPath": "C:\\_ws\\ProvaC#\\ProvaCsharp\\obj\\",
+      "outputPath": "C:\\Luan\\code\\Prova_C-_Gabriel_Luan\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

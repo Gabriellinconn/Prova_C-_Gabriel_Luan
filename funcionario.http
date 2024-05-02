@@ -1,0 +1,11 @@
+###Cadastrar Funcionario
+POST http://localhost:5154/api/funcionario/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Gabriel",
+    "cpf" : "14200038951",
+}
+
+###Listar Funcionarios
+GET http://localhost:5154/api/funcionario/listar
