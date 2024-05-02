@@ -9,30 +9,74 @@ builder.Services.AddDbContext<AppDataContext>();
 
 var app = builder.Build();
 
-app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [FromServices] AppDataContext ctx) => {
-    Funcionario? funcionarioEncontrado = ctx.Funcionarios.FirstOrDefault(x=> x.Cpf == funcionario.Cpf);
-    if(funcionarioEncontrado is null){
+app.MapGet("/", () => "API de Funcionarios");
+
+// CADASTRAR FUNCIONARIO
+app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [FromServices] AppDataContext ctx) =>
+{
+    Funcionario? funcionarioEncontrado = ctx.Funcionarios.FirstOrDefault(x => x.Cpf == funcionario.Cpf);
+    if (funcionarioEncontrado is null)
+    {
         ctx.Funcionarios.Add(funcionario);
-    ctx.SaveChanges();
-    return Results.Created("", funcionario);
+        ctx.SaveChanges();
+        return Results.Created("", funcionario);
     }
 
     return Results.BadRequest("Funcionario ja existente");
 
 });
 
-app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) => {
+// LISTAR FUNCIONARIO
+app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
+{
 
-    if(ctx.Funcionarios.Any()){
+    if (ctx.Funcionarios.Any())
+    {
         return Results.Ok(ctx.Funcionarios.ToList());
     }
     return Results.NotFound("Não existem funcionários cadatrados");
 });
 
-app.MapPost("/api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>{
-    Funcionario? funcionarioEncontrado = ctx.Funcionarios.FirstOrDefault(x=> x.FuncionarioId == Folha.funcionarioId);
+// CADASTRAR FOLHA
+app.MapPost("/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>
+{
+    Folha? folhaEncontrada = ctx.Folhas.FirstOrDefault(x => x.FuncionarioId == folha.FuncionarioId);
+
+    if (folhaEncontrada is null)
+    {
+        ctx.Folhas.Add(folha);
+        ctx.SaveChanges();
+        return Results.Created("", folha);
+    }
+    return Results.BadRequest("Já Existe um produto com o mesmo nome");
+
 
 });
+
+// LISTAR FOLHA
+app.MapGet("/folha/listar", ([FromServices] AppDataContext ctx) =>
+{
+    if (ctx.Folhas.Any())
+    {
+        return Results.Ok(ctx.Folhas.ToList());
+    }
+    return Results.NotFound("Não Há folhas");
+
+});
+
+// BUSCAR FOLHA
+app.MapGet("/api/folha/buscar/", ([FromRoute] string id,
+    [FromServices] AppDataContext ctx) =>
+{
+    Folha? folha = ctx.Folhas.Find();
+    if (folha == null)
+    {
+        return Results.NotFound("folha não encontrada!");
+    }
+    return Results.Ok(folha);
+
+}
+);
 
 
 app.Run();

@@ -8,5 +8,4 @@ Content-Type: application/json
 }
 
 ###Listar Funcionarios
-
 GET http://localhost:5154/api/funcionario/listar
