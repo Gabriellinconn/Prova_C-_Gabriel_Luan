@@ -14,15 +14,12 @@ app.MapGet("/", () => "API de Funcionarios");
 // CADASTRAR FUNCIONARIO
 app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [FromServices] AppDataContext ctx) =>
 {
-    Funcionario? funcionarioEncontrado = ctx.Funcionarios.FirstOrDefault(x => x.Cpf == funcionario.Cpf);
-    if (funcionarioEncontrado is null)
     {
         ctx.Funcionarios.Add(funcionario);
         ctx.SaveChanges();
         return Results.Created("", funcionario);
     }
 
-    return Results.BadRequest("Funcionario ja existente");
 
 });
 
@@ -38,9 +35,9 @@ app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
 });
 
 // CADASTRAR FOLHA
-app.MapPost("/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>
+app.MapPost("api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>
 {
-    Folha? folhaEncontrada = ctx.Folhas.FirstOrDefault(x => x.FuncionarioId == folha.FuncionarioId);
+    Folha? folhaEncontrada = ctx.Folhas.FirstOrDefault(x => x.Id == folha.Id);
 
     if (folhaEncontrada is null)
     {
@@ -54,7 +51,7 @@ app.MapPost("/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataC
 });
 
 // LISTAR FOLHA
-app.MapGet("/folha/listar", ([FromServices] AppDataContext ctx) =>
+app.MapGet("api/folha/listar", ([FromServices] AppDataContext ctx) =>
 {
     if (ctx.Folhas.Any())
     {
@@ -65,7 +62,7 @@ app.MapGet("/folha/listar", ([FromServices] AppDataContext ctx) =>
 });
 
 // BUSCAR FOLHA
-app.MapGet("/api/folha/buscar/", ([FromRoute] string id,
+app.MapGet("/api/folha/buscar/{id}", ([FromRoute] string id,
     [FromServices] AppDataContext ctx) =>
 {
     Folha? folha = ctx.Folhas.Find();

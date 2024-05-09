@@ -5,11 +5,27 @@
 namespace MinimalApiProject.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Folhas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Valor = table.Column<double>(type: "REAL", nullable: true),
+                    Quantidade = table.Column<double>(type: "REAL", nullable: true),
+                    Mes = table.Column<int>(type: "INTEGER", nullable: false),
+                    Ano = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Folhas", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Funcionarios",
                 columns: table => new
@@ -27,6 +43,9 @@ namespace MinimalApiProject.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Folhas");
+
             migrationBuilder.DropTable(
                 name: "Funcionarios");
         }

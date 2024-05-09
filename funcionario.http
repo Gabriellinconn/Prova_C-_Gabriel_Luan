@@ -4,7 +4,8 @@ Content-Type: application/json
 
 {
     "nome" : "Gabriel",
-    "cpf" : "14200038951",
+
+    "cpf" : "14200038951"
 }
 
 ###Listar Funcionarios
