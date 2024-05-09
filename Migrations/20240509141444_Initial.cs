@@ -30,7 +30,7 @@ namespace MinimalApiProject.Migrations
                 name: "Funcionarios",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<string>(type: "TEXT", nullable: true),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Cpf = table.Column<string>(type: "TEXT", nullable: false)
                 },

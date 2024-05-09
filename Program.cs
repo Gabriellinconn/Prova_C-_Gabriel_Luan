@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using provaCsharp.Modelos;
@@ -9,18 +9,25 @@ builder.Services.AddDbContext<AppDataContext>();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "API de Funcionarios");
-
-// CADASTRAR FUNCIONARIO
 app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [FromServices] AppDataContext ctx) =>
 {
+<<<<<<< HEAD
+=======
+    try
+>>>>>>> 70956959e1efb25622278423a781cc1a57353d11
     {
         ctx.Funcionarios.Add(funcionario);
         ctx.SaveChanges();
         return Results.Created("", funcionario);
     }
+<<<<<<< HEAD
 
 
+=======
+    catch(Exception){
+    throw new Exception("Erro");
+}
+>>>>>>> 70956959e1efb25622278423a781cc1a57353d11
 });
 
 // LISTAR FUNCIONARIO
@@ -31,7 +38,7 @@ app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
     {
         return Results.Ok(ctx.Funcionarios.ToList());
     }
-    return Results.NotFound("Não existem funcionários cadatrados");
+    return Results.NotFound("Não existem funcionários cadatrados!");
 });
 
 // CADASTRAR FOLHA
@@ -44,9 +51,9 @@ app.MapPost("api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDa
         ctx.Folhas.Add(folha);
         ctx.SaveChanges();
         return Results.Created("", folha);
-    }
-    return Results.BadRequest("Já Existe um produto com o mesmo nome");
 
+    }
+    return Results.BadRequest("Esta Folha já existe!");
 
 });
 
